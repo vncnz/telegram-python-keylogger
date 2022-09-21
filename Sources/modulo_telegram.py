@@ -15,8 +15,8 @@ from threading import Thread
 # logger = createLogger('telegram', ('_loglevel' in config) and config['_loglevel'].upper() or None)
 # logger = createLogger('telegram', None)
 
-token = '5506916683:AAHrNc4lorkmn2jjpRdZwYo3eF50Z6OhTRI'
-botname = 'EsameSicurezzaVincenzoBot'
+token = 'A_TOKEN'
+botname = 'A_BOTNAME'
 
 reply_markup_remove_keyboard = telegram.ReplyKeyboardRemove()
 
