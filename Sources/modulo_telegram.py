@@ -61,6 +61,10 @@ def error_callback(update, ctx, error):
   except TelegramError as ex:
     # logger.error('Telegram error: unknown')
     pass
+  try:
+    update.message.reply_text("error_callback")
+  except ex:
+    pass
 
 class Bot(object):
   def __init__(self, token):
@@ -69,7 +73,7 @@ class Bot(object):
     self.updater = Updater(token=token)
     self.dispatcher = self.updater.dispatcher
     self.dispatcher.add_error_handler(error_callback)
-    self.chatId = None # 212922257
+    self.chatId = None
 
     # intercept commands
     self.handlers = [
